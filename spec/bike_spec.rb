@@ -1,5 +1,6 @@
 # link to the bike class
 require './lib/bike'
+require './lib/docking_station'
 
 # we're describing the functionalityvof o specific class, Bike
 describe Bike do 
@@ -24,6 +25,22 @@ describe Bike do
 		bike.break
 		bike.fix 
 		expect(bike).not_to be_broken
+	end
+
+end
+
+
+describe DockingStation do 
+
+	it "should accept a bike" do 
+		bike = Bike.new
+		station = DockingStation.new
+		# we expect the station to have 0 bikes
+		expect(station.bike_count).to eq(0)
+		# let's dock a bike into the station
+		station.dock(bike)
+		# now we expect the station to have one bike
+		expect(station.bike_count).to eq(1)
 	end
 
 end
